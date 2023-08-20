@@ -13,10 +13,12 @@ import { watch } from "vue";
 import Navbar from "../components/Navbar";
 import getUser from "@/composables/getUser";
 import { useRouter } from "vue-router";
+import Spinner from '@/components/Spinner.vue';
 export default {
   components: {
     ChatWindow,
-    NewChatForm, Navbar },
+    NewChatForm, Navbar,
+    Spinner },
   setup() {
     let { user } = getUser();
     let router = useRouter();

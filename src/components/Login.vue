@@ -8,24 +8,31 @@
       </div>
       <button type="submit">Login</button>
     </form>
+    <div v-if="showLoading">
+      <Spinner></Spinner>
+    </div>
   </template>
-  
-  <script>
-import { ref } from 'vue'
-import useLogin from '../composables/useLogin'
+<script>
+import { ref } from 'vue';
+import Spinner from '../components/Spinner.vue';
+import useLogin from '../composables/useLogin';
   export default {
+    components:{
+      Spinner
+    },
     setup(props, context){
       let email = ref("");
       let password = ref("");
-
+      let showLoading = ref(false);
       let {error, logIn} = useLogin();
       let signIn = async ()=>{
+        showLoading.value = true;
        let res = await logIn(email.value, password.value);
        if(res){
           context.emit('enterChatroom');
        }
       }
-      return { email, password, signIn, error}
+      return { email, password, signIn, error, showLoading}
     }
   }
   </script>

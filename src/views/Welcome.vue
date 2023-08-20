@@ -25,7 +25,7 @@ import { useRouter } from 'vue-router';
 export default {
   components: {
     Login,
-    SignUp,
+    SignUp
   },
   setup() {
     let showLoginForm = ref(true);
